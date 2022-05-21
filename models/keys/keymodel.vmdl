@@ -11,7 +11,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/sboxkeyv2.fbx"
+						filename = "models/keys/sboxkeyv2.fbx"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.08
@@ -59,11 +59,11 @@
 						[
 							{
 								from = "cylinder.vmat"
-								to = "materials/key.vmat"
+								to = "materials/keys/metal_yellow.vmat"
 							},
 							{
 								from = "path 0.vmat"
-								to = "materials/white.vmat"
+								to = "materials/keys/metal_white.vmat"
 							},
 						]
 						use_global_default = false
@@ -79,7 +79,10 @@
 						_class = "PhysicsHullFromRender"
 						parent_bone = ""
 						surface_prop = "keysounds"
-						collision_prop = "default"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
 						faceMergeAngle = 20.0
 						maxHullVertices = 32
 					},
@@ -89,5 +92,6 @@
 		model_archetype = ""
 		primary_associated_entity = ""
 		anim_graph_name = ""
+		base_model_name = ""
 	}
 }
