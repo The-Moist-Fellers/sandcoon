@@ -29,7 +29,7 @@ namespace SC
 		{
 			base.Spawn();
 
-			SetModel("models/Purchase/PurchaseBaseTemp.vmdl");
+			SetModel("models/purchase/PurchaseBaseTemp.vmdl");
 		}
 
 		public override void StartTouch( Entity other )

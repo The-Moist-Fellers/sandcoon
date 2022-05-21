@@ -6,7 +6,7 @@ namespace SC
 {
 	[Title("Dropper"), Category("Purchasables")]
 	[Library("purch_drop")]
-	[HammerEntity, EditorModel("models/Droppers/DropperTemp.vmdl")]
+	[HammerEntity, EditorModel("models/droppers/DropperTemp.vmdl")]
 	public partial class Droppers : ModelEntity 
 	{
 		public bool IsPurchased;
@@ -54,7 +54,7 @@ namespace SC
 			TimeSinceDropped = 0;
 
 			var key = new ModelEntity();
-			key.SetModel("models/Keys/Key.vmdl");
+			key.SetModel("models/keys/Key.vmdl");
 			key.Position = Position += Position.z * 15;
 		}
 	}
