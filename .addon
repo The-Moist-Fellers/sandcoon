@@ -1,15 +1,17 @@
 {
   "Title": "sandcoon",
   "Type": "game",
-  "Org": "local",
+  "Org": "moistfellers",
   "Ident": "sandcoon",
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
-  "ResourcePaths": null,
+  "ResourcePaths": [
+    "/ui/*"
+  ],
   "HasCode": true,
   "CodePath": "/code/",
-  "RootNamespace": "Sandbox",
+  "RootNamespace": "SC",
   "Metadata": {
     "MapList": [
       "facepunch.construct"
