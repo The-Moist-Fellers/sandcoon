@@ -4,6 +4,8 @@ namespace SC
 {
 	public partial class SCPlayer : Player 
 	{
+		public int Money {get; set;} = 0;
+
 		public override void Respawn()
 		{
 			base.Respawn();

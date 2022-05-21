@@ -6,16 +6,15 @@ namespace SC
 {
 	[Title("Dropper"), Category("Purchasables")]
 	[Library("purch_drop")]
-	[HammerEntity, EditorModel("models/droppers/DropperTemp.vmdl")]
+	[HammerEntity]
+	[Model]
+	[RenderFields]
 	public partial class Droppers : ModelEntity 
 	{
 		public bool IsPurchased;
 
 		[Property, Title("Drop Speed"), Category("Standard Settings"), Description("Changes the drop speed of this here dropper.")]
 		public float DropSpeed {get; set;}
-
-		[Property, Title("Dropper Model"), Category("Standard Settings"), Description("Changes the model of this dropper.")]
-		public string DropperModel {get; set;}
 
 		public TimeSince TimeSinceDropped;
 
@@ -25,7 +24,7 @@ namespace SC
 
 			IsPurchased = false;
 
-			SetModel(DropperModel);
+			EnableAllCollisions = true;
 		}
 
 		// public void CreatePreviews() 
@@ -39,6 +38,8 @@ namespace SC
 
 			if (IsPurchased) 
 			{
+				RenderColor.WithAlpha(1.0f);
+
 				if (TimeSinceDropped >= DropSpeed)
 					DropKey();
 			}
@@ -54,7 +55,7 @@ namespace SC
 			TimeSinceDropped = 0;
 
 			var key = new ModelEntity();
-			key.SetModel("models/keys/Key.vmdl");
+			key.SetModel("models/keys/keymodel.vmdl");
 			key.Position = Position += Position.z * 15;
 		}
 	}
