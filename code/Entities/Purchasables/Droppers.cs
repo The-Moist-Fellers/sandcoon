@@ -11,10 +11,16 @@ namespace SC
 	[RenderFields]
 	public partial class Droppers : ModelEntity 
 	{
-		public bool IsPurchased;
+		[Property, Title("Starts Purchased?"), Description("Should this dropper start purchased?")]
+		public bool IsPurchased {get; set;} = false;
 
-		[Property, Title("Drop Speed"), Category("Standard Settings"), Description("Changes the drop speed of this here dropper.")]
+		[Property, Title("Drop Speed"), Description("Changes the drop speed of this here dropper.")]
 		public float DropSpeed {get; set;}
+
+		[Property, Title("Dropper Level"), Description("Changes the current level of the dropper (changes the key level too).")]
+		public DropperLevel CurrDropLevel {get; set;} = DropperLevel.LevelOne;
+
+		public KeyEnt KeyEnt {get; set;} = new KeyEnt();
 
 		public TimeSince TimeSinceDropped;
 
@@ -22,9 +28,15 @@ namespace SC
 		{
 			base.Spawn();
 
-			IsPurchased = false;
+			switch (CurrDropLevel) 
+			{
+				case DropperLevel.LevelOne: SetModel("models/droppers/droppertemp.vmdl"); break; // Add more models and change them for each level - Lokiv
+				default: SetModel("models/droppers/droppertemp.vmdl"); break;
+			}
 
 			EnableAllCollisions = true;
+			UsePhysicsCollision = true;
+			CollisionGroup = CollisionGroup.Prop;
 		}
 
 		// public void CreatePreviews() 
@@ -41,7 +53,7 @@ namespace SC
 				RenderColor.WithAlpha(1.0f);
 
 				if (TimeSinceDropped >= DropSpeed)
-					DropKey();
+					DropKey(KeyEnt);
 			}
 			if (!IsPurchased) 
 			{
@@ -50,13 +62,27 @@ namespace SC
 			}
 		}
 
-		public void DropKey() 
+		public void DropKey(KeyEnt keyent) 
 		{
 			TimeSinceDropped = 0;
 
-			var key = new ModelEntity();
-			key.SetModel("models/keys/keymodel.vmdl");
-			key.Position = Position += Position.z * 15;
+			switch (CurrDropLevel) 
+			{
+				case DropperLevel.LevelOne: keyent = new KeyLvlOne(); break;
+			}
+
+			keyent.Spawn();
+			keyent.Position = Position += Position.z * 15;
 		}
+	}
+
+	public enum DropperLevel 
+	{
+		LevelOne = 1,
+		LevelTwo,
+		LevelThree,
+		LevelFour,
+		LevelFive,
+		LevelSix
 	}
 }

@@ -45,9 +45,9 @@
 				[
 					{
 						_class = "PhysicsHullFile"
-						name = "droppertemp"
+						name = "droppertemp_upperphys"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "metal"
 						collision_group = ""
 						collision_interact_as = ""
 						collision_interact_with = ""
@@ -58,7 +58,34 @@
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
-						filename = "models/Droppers/droppertemp.fbx"
+						filename = "models/droppers/droppertemp_upperphys.fbx"
+						import_scale = 1.0
+						faceMergeAngle = 5.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "droppertemp_lowerphys"
+						parent_bone = ""
+						surface_prop = "metal"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
+						recenter_on_parent_bone = false
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/droppers/droppertemp_lowerphys.fbx"
 						import_scale = 1.0
 						faceMergeAngle = 5.0
 						maxHullVertices = 0
