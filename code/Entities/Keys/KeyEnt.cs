@@ -6,20 +6,6 @@ namespace SC
 	{
 		public virtual int SellPrice {get; set;}
 
-		public KeyLevel CurrKeyLevel {get; set;} = KeyLevel.KeyLvlOne;
-
-		public void SwitchToKeyLevel(KeyLevel keylvl, Droppers dropparent) 
-		{
-			keylvl = CurrKeyLevel;
-
-			if (keylvl == KeyLevel.KeyLvlOne) 
-			{
-				var keylvlone = new KeyLvlOne();
-
-				dropparent.DropKey(keylvlone);
-			}
-		}
-
 		public override void Spawn()
 		{
 			base.Spawn();

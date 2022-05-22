@@ -17,10 +17,8 @@ namespace SC
 		[Property, Title("Drop Speed"), Description("Changes the drop speed of this here dropper.")]
 		public float DropSpeed {get; set;}
 
-		[Property, Title("Dropper Level"), Description("Changes the current level of the dropper (changes the key level too).")]
-		public DropperLevel CurrDropLevel {get; set;} = DropperLevel.LevelOne;
-
-		public KeyEnt KeyEnt {get; set;} = new KeyEnt();
+		[Property, Title("Key Level"), Description("Changes the level of the keys that this dropper drops.")]
+		public KeyLevel DropperKeyLevel {get; set;} = KeyLevel.KeyLvlOne;
 
 		public TimeSince TimeSinceDropped;
 
@@ -28,15 +26,15 @@ namespace SC
 		{
 			base.Spawn();
 
-			switch (CurrDropLevel) 
+			switch(DropperKeyLevel)
 			{
-				case DropperLevel.LevelOne: SetModel("models/droppers/droppertemp.vmdl"); break; // Add more models and change them for each level - Lokiv
+				case KeyLevel.KeyLvlOne: SetModel("models/droppers/droppertemp.vmdl"); break;
 				default: SetModel("models/droppers/droppertemp.vmdl"); break;
 			}
 
-			EnableAllCollisions = true;
 			UsePhysicsCollision = true;
-			CollisionGroup = CollisionGroup.Prop;
+			MoveType = MoveType.None;
+			CollisionGroup = CollisionGroup.Always;
 		}
 
 		// public void CreatePreviews() 
@@ -50,39 +48,24 @@ namespace SC
 
 			if (IsPurchased) 
 			{
-				RenderColor.WithAlpha(1.0f);
-
 				if (TimeSinceDropped >= DropSpeed)
-					DropKey(KeyEnt);
-			}
-			if (!IsPurchased) 
-			{
-				RenderColor.WithAlpha(0.5f);
-				// Alpha halved? Other things too maybe - Lokiv
+					DropKey();
 			}
 		}
 
-		public void DropKey(KeyEnt keyent) 
+		public void DropKey() 
 		{
-			TimeSinceDropped = 0;
+			TimeSinceDropped = 0.0f;
 
-			switch (CurrDropLevel) 
+			var keyent = new KeyEnt();
+
+			switch (DropperKeyLevel) 
 			{
-				case DropperLevel.LevelOne: keyent = new KeyLvlOne(); break;
+				case KeyLevel.KeyLvlOne: keyent = new KeyLvlOne(); break;
 			}
 
 			keyent.Spawn();
-			keyent.Position = Position += Position.z * 15;
+			keyent.Position = Position *= Position.z * 15;
 		}
-	}
-
-	public enum DropperLevel 
-	{
-		LevelOne = 1,
-		LevelTwo,
-		LevelThree,
-		LevelFour,
-		LevelFive,
-		LevelSix
 	}
 }
