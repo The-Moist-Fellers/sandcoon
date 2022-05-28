@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace SC
 {
-	[Title("Dropper"), Category("Purchasables")]
+	[Title("Dropper"), Category("Purchasables"), Icon("logout")]
 	[Library("purch_drop")]
 	[HammerEntity]
 	[Model]
@@ -26,6 +26,7 @@ namespace SC
 		{
 			base.Spawn();
 
+			// Switches the model based on the set key level
 			switch(DropperKeyLevel)
 			{
 				case KeyLevel.KeyLvlOne: SetModel("models/droppers/droppertemp.vmdl"); break;
@@ -46,26 +47,30 @@ namespace SC
 		{
 			base.Simulate( cl );
 
-			if (IsPurchased) 
+			// Drop keys if the dropper is purchased // NEEDS FIXING!!!! - Lokiv \\
+			if (IsPurchased == true) 
 			{
 				if (TimeSinceDropped >= DropSpeed)
 					DropKey();
 			}
 		}
 
+		// KeyEnt for the key that's gonna be dropped from the dropper // Dunno if it works fully, if not find some other way to fix it or something - Lokiv \\
+		public KeyEnt KeyEntit;
+
 		public void DropKey() 
 		{
 			TimeSinceDropped = 0.0f;
 
-			var keyent = new KeyEnt();
+			// var keyent = new KeyEnt(); // Old way of making a KeyEnt thing, possibly not the correct way, dunno - Lokiv
 
 			switch (DropperKeyLevel) 
 			{
-				case KeyLevel.KeyLvlOne: keyent = new KeyLvlOne(); break;
+				case KeyLevel.KeyLvlOne: KeyEntit = new KeyLvlOne(); break;
 			}
 
-			keyent.Spawn();
-			keyent.Position = Position += Position.z * 15;
+			KeyEntit.Spawn();
+			KeyEntit.Position = Position += Position.z * 15;
 		}
 	}
 }

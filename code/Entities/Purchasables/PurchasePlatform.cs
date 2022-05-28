@@ -4,9 +4,10 @@ using System.ComponentModel;
 
 namespace SC
 {
-	[Title("Purchase Platform"), Category("Purchasables")]
+	[Title("Purchase Platform"), Category("Purchasables"), Icon("add_circle")]
 	[Library("purch_plat")]
 	[HammerEntity, EditorModel("models/Purchase/PurchaseBaseTemp.vmdl")]
+	[Model] // Just so it doesn't hide when shift+o'd in editor - Lokiv
 	public class PurchasePlatform : ModelEntity, IUse 
 	{
 		[Property, Title("Child Dropper"), Description("Changes which child dropper this is the parent to."), FGDType("target_destination")]
@@ -17,8 +18,15 @@ namespace SC
 
 		public bool OnUse(Entity ent) 
 		{
-			Purchase(ChildDropper);
-			return true;
+			var player = Local.Pawn as SCPlayer;
+			if (player.Money >= Price)
+			{
+				Purchase(ChildDropper);
+				return true;
+			}
+
+			Log.Info("Get more money bitch1!!");
+			return false;
 		}
 
 		public bool IsUsable(Entity ent) 
@@ -44,9 +52,7 @@ namespace SC
 		{
 			base.Simulate( cl );
 
-			var dropper = ChildDropper;
-
-			if (dropper.IsPurchased) 
+			if (ChildDropper.IsPurchased == true) 
 			{
 				Delete();
 			}
@@ -57,7 +63,12 @@ namespace SC
 		{
 			base.StartTouch( other );
 
-			Purchase(ChildDropper);
+			if (other is SCPlayer player) 
+			{
+				if (player.Money >= Price)
+					Purchase(ChildDropper);
+				else Log.Info("Get more money bitch1!!");
+			}
 		}
 
 		public void Purchase(Droppers dropper) 
