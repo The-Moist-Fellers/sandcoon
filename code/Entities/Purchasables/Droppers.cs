@@ -27,7 +27,8 @@ namespace SC
 			base.Spawn();
 
 			// Switches the model based on the set key level
-			// We don't need enums to do this, its just doesn't seem right - Rifter
+			// We don't need enums to do this, its just doesn't seem right - Rifter 
+			// I tried using if statements, iirc it both didn't work and didn't look good, a switch was the best way - Lokiv
 			switch(DropperKeyLevel)
 			{
 				case 1:
@@ -86,13 +87,13 @@ namespace SC
 
 			var drop = new KeyEnt();
 
-			//WTF, you're adding to the position of the dropper as well as setting the key - Rifter
+			//WTF, you're adding to the position of the dropper as well as setting the key - Rifter // Bro I thought it'd just set the position of the key thing!! - Lokiv
 			//drop.Position = Position += Position.z * 15;
 
-			drop.Position = Position.z * 15;
+			// var droppos = GetAttachment("drop"); // Set the key position on the "drop" attachment when it spawns - Lokiv
+
+			drop.Position = /*droppos*/ Position.z * 15;
 			drop.Spawn();
-
-
 		}
 	}
 }

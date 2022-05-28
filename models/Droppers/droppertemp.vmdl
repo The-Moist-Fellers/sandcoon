@@ -99,6 +99,21 @@
 					},
 				]
 			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "drop"
+						parent_bone = ""
+						relative_origin = [ 40.761368, 0.0, 66.598389 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
