@@ -16,7 +16,7 @@ namespace SC
 		{
 			base.ClientJoined( client );
 
-			var pawn = new SCPlayer();
+			var pawn = new SCPlayer(client);
 			client.Pawn = pawn;
 
 			pawn.Respawn();

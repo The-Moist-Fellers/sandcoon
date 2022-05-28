@@ -65,7 +65,7 @@ namespace SC
 			}
 
 			keyent.Spawn();
-			keyent.Position = Position *= Position.z * 15;
+			keyent.Position = Position += Position.z * 15;
 		}
 	}
 }
