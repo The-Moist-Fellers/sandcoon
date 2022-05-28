@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace SC
 {
 	[Title("Purchase Platform"), Category("Purchasables"), Icon("add_circle")]
-	[Library("purch_plat")]
+	[Library( "purch_plat" )]
 	[HammerEntity, EditorModel("models/Purchase/PurchaseBaseTemp.vmdl")]
 	[Model] // Just so it doesn't hide when shift+o'd in editor - Lokiv
 	public class PurchasePlatform : ModelEntity
@@ -19,7 +19,7 @@ namespace SC
 		public Droppers ChildDropper {get; set;} // Work this thing out and like make it work and shit - Lokiv
 
 		[Property, Title("Price"), Description("Changes the price of this purchasable.")]
-		public int Price {get; set;} // Public for potential world text UI
+		public int Price { get; set; } // Public for potential world text UI
 
 		public override void Spawn()
 		{
@@ -32,7 +32,7 @@ namespace SC
 
 			SetModel("models/purchase/PurchaseBaseTemp.vmdl");
 		}
-
+/*
 		public override void Simulate( Client cl )
 		{
 			base.Simulate( cl );
@@ -61,7 +61,7 @@ namespace SC
 				Delete();
 			}
 			else return;
-		}
+		}*/
 
 		public override void StartTouch( Entity other )
 		{
@@ -72,9 +72,7 @@ namespace SC
 				if (player.Money >= Price)
 					Purchase(ChildDropper);
 				else
-				{
-					Log.Info("Get more money bitch1!!");
-				}
+					Log.Info("Insufficient money");
 			}
 		}
 

@@ -4,7 +4,6 @@ namespace SC
 {
 	public partial class SCPlayer : Player 
 	{
-		public int Money {get; set;} = 0;
 
 		public ClothingContainer Clothing = new();
 

@@ -4,6 +4,8 @@ namespace SC
 {
 	public partial class SCGame : Game
 	{
+		public static SCGame GameInstance = Current as SCGame;
+
 		public SCGame()
 		{
 			// if (IsServer) 
