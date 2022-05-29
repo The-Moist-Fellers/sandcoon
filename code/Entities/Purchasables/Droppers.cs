@@ -92,7 +92,7 @@ namespace SC
 
 			// var droppos = GetAttachment("drop"); // Set the key position on the "drop" attachment when it spawns - Lokiv
 
-			drop.Position = /*droppos*/ Position.z * 15;
+			drop.Position = /*droppos*/ Position.z * 5;
 			drop.Spawn();
 		}
 	}
