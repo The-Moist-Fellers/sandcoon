@@ -30,7 +30,7 @@
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "None"
-						parent_bone = ""
+						parent_bone = "ROOT"
 						import_filter = 
 						{
 							exclude_by_default = false
@@ -100,17 +100,25 @@
 				]
 			},
 			{
-				_class = "AttachmentList"
+				_class = "Skeleton"
 				children = 
 				[
 					{
-						_class = "Attachment"
-						name = "drop"
-						parent_bone = ""
-						relative_origin = [ 40.761368, 0.0, 66.598389 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
-						weight = 1.0
-						ignore_rotation = false
+						_class = "Bone"
+						name = "ROOT"
+						children = 
+						[
+							{
+								_class = "Bone"
+								name = "drop"
+								origin = [ 55.0, 0.0, 65.0 ]
+								angles = [ 0.0, 0.0, 0.0 ]
+								do_not_discard = true
+							},
+						]
+						origin = [ 0.0, 0.0, 0.0 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						do_not_discard = true
 					},
 				]
 			},
