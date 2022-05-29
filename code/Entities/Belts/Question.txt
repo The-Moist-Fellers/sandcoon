@@ -1,0 +1,1 @@
+Should we have one singular Belt.cs file where we can change / choose which type it is in hammer (using bools or enums or whatever else that'd work), or should they be separate like how they are right now? - Lokiv
