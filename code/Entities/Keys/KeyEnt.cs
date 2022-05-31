@@ -7,6 +7,9 @@ namespace SC
 		public int SellPrice { get; private set; } = 5;
 		public int KeyLevel { get; private set; } = 1;
 
+		TimeSince timeBeforeDeletion;
+		double timeUntilDeletion = 35.0;
+
 		public override void Spawn()
 		{
 			base.Spawn();
@@ -14,6 +17,16 @@ namespace SC
 			SetModel("models/keys/keymodel.vmdl");
 
 			SetupPhysicsFromModel(PhysicsMotionType.Dynamic);
+			timeBeforeDeletion = 0;
+		}
+
+		//If the key never makes it to the end sell point, this should be deleted
+		//to prevent lag
+		[Event.Tick.Server]
+		public void SimulateLife()
+		{
+			if ( timeBeforeDeletion >= timeUntilDeletion )
+				Delete();
 		}
 
 		public void UpgradeKey()
@@ -25,11 +38,12 @@ namespace SC
 		public void SellKey() 
 		{
 			//We need to check if the tycoon belongs to this player
-			var player = Local.Pawn as SCPlayer;
+			//Apparently this isn't working so the owner stuff we'll need to figure out
+			/*var player = Local.Pawn as SCPlayer;
 
 			if ( player == null ) return;
 
-			player.AddMoney( SellPrice );
+			player.AddMoney( SellPrice );*/
 
 			Delete();
 		}

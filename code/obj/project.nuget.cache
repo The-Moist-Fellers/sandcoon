@@ -1,8 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "mD3Ktf44C3bAS4rYlicmkgjqf/FAI6umYsoR8k7YeRQo0WuszaIFN2xWAuR+FwRTdgm7TY6RqxqpMvecCdKSzw==",
-  "success": true,
+  "dgSpecHash": "NWXT4vIynkPgx6xHuDhpZimKcKmiLMchQoi7CHzl9rD1fSrETPYpjHmYQKOsU18QqzA98bWsMkOdgBNv/xEPBw==",
+  "success": false,
   "projectFilePath": "D:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\sandcoon\\code\\sandcoon.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'E:\\Steam Spel\\steamapps\\common\\sbox\\addons\\base\\code\\base.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "E:\\Steam Spel\\steamapps\\common\\sbox\\addons\\base\\code\\base.csproj",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }
